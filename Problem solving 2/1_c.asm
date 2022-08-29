@@ -1,0 +1,31 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE
+MAIN PROC
+    MOV AX,@DATA
+    MOV DS,AX 
+    MOV AH,1
+    INT 21H
+    MOV DL,AL
+IF:
+   CMP DL,'A'
+   JGE ELSE_IF
+   JMP EXIT
+ELSE_IF:
+       CMP DL,'Z'
+       JLE ELSE
+       JMP EXIT 
+ELSE:
+     MOV AH,2
+     INT 21H
+     JMP EXIT       
+EXIT:
+    MOV AH,4CH
+    INT 21H
+    MAIN ENDP
+ENDP MAIN
+
+
+
+

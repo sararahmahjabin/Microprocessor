@@ -1,0 +1,58 @@
+.MODEL SMALL
+.STACK 100H
+
+.DATA
+    A_1 DB 'input:$'
+    B_2 DB 'ZERO:$'
+    C_3 DB 'NEGATIVE:$'
+    D_4 DB 'POSITIVE:$'
+    C1 DB ?
+    
+.CODE
+  MAIN PROC
+    MOV AX,@DATA
+    MOV DS,AX 
+    
+    LEA DA,A_1
+    MOV AH,9
+    INT 21H 
+    
+    MOV AH,1
+    INT 21H  
+    
+    MOV C1,AL  
+    
+    MOV AH,2
+    MOV DL,0DH
+    INT 21H   
+    
+    MOV DL,0AH
+    INT 21H
+    
+    CMP C1,30H
+    
+    JL NEGATIVE
+    JG POSITIVE
+    JE ZERO
+    
+    LEA DX,B_2
+    MOV AH,9
+    INT 21H
+    
+    LEA DX,C_3
+    MOV AH,9
+    INT 21H
+    
+    LEA DX,D_4
+    MOV AH,9
+    INT 21H
+    
+    JMP EXIT
+    
+    EXIT:
+    MOV AH,4CH
+    INT 21H
+    
+   MAIN ENDP
+  END MAIN
+       

@@ -1,0 +1,25 @@
+.MODEL SMALL
+
+.STACK 100H
+
+.DATA
+
+WORD1 DB ?
+
+.CODE
+
+
+MAIN PROC    
+    
+    MOV WORD1,11011001B
+    
+    NOT WORD1
+
+
+    MOV AH,4CH
+
+    INT 21H 
+
+    MAIN ENDP
+
+END MAIN

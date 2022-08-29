@@ -1,0 +1,22 @@
+.MODEL SMALL
+
+.STACK 100H
+
+.DATA
+
+.CODE
+
+MAIN PROC
+
+    MOV AH,01011110B
+    
+    NOT AH
+
+
+    MOV AH,4CH
+
+    INT 21H 
+
+    MAIN ENDP
+
+END MAIN

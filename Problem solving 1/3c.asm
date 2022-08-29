@@ -1,0 +1,22 @@
+.MODEL SMALL
+
+.STACK 100H
+
+.DATA
+
+.CODE
+
+MAIN PROC    
+    
+    MOV DX,0111110000B
+    
+    TEST DX,10000000B
+
+
+    MOV AH,4CH
+
+    INT 21H 
+
+    MAIN ENDP
+
+END MAIN

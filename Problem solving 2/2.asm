@@ -1,0 +1,36 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+.CODE
+MAIN PROC
+    MOV AX,@DATA
+    MOV DS,AX
+    MOV AH,1
+    INT 21H 
+    MOV BL,AL
+    CMP BL,'A'
+    JE LABEL1
+    CMP BL,'B'
+    JE LABEL2
+    JMP EXIT
+LABEL1:
+     MOV AH,1
+     MOV DL,0DH
+     INT 21H
+     MOV DL,BL
+     INT 21H
+     JMP EXIT
+LABEL2:
+     MOV AH,2
+     MOV DL,0AH
+     INT 21H
+     MOV DL,BL
+     INT 21H
+EXIT:
+    MOV AH,4CH
+    INT 21H 
+    MAIN ENDP
+END MAIN
+
+
+
